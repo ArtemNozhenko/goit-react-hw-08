@@ -1,14 +1,13 @@
-import ContactForm from "../ContactForm/ContactForm";
-import SearchBox from "../SearchBox/SearchBox";
-import ContactList from "../ContactList/ContactList";
-import css from "./App.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { fetchContacts } from "../../redux/contactsOps";
-import ErrorMessage from "../ErrorMessage/ErrorMessage";
-import Loader from "../Loader/Loader";
+import { fetchContacts } from "../../redux/contacts/operations";
+import ContactForm from "../../components/ContactForm/ContactForm";
+import SearchBox from "../../components/SearchBox/SearchBox";
+import ContactList from "../../components/ContactList/ContactList";
+import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
+import Loader from "../../components/Loader/Loader";
 
-export default function App() {
+export default function ContactsPage() {
   const dispatch = useDispatch();
   const isLoading = useSelector(
     (state) => state.contacts.loading
@@ -24,7 +23,7 @@ export default function App() {
   return (
     <>
       <div>
-        <h1 className={css.title}>Phonebook</h1>
+        <h1>Phonebook</h1>
         <ContactForm />
         <SearchBox />
         {isLoading && <Loader />}
